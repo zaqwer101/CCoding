@@ -14,13 +14,15 @@ int main(int argc, char **argv)
 	int directionX, directionY;
 	
 	changePosition(&player.X , &player.Y, -1, 1);
-	printf("%i, %i\n", player.X, player.Y);
+	
+	printf("Current coodrds: [%i, %i]\n", player.X, player.Y);
 	
 	return 0;
 }
 
 void changePosition(int *playerX, int *playerY, int x, int y)
 {
+	*playerX += x;
 	*playerX += x;
 	*playerY += y;
 }

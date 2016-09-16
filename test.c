@@ -4,6 +4,7 @@ struct Player { int hp; int max_hp; int damage; int lvl; int exp; int exp_to_lvl
 int current_line;
 int main(int argc, char **argv)
 {	
+	WINDOW *log_win;
 	current_line = 2;
 	start_color();
 	init_pair(1, COLOR_BLUE, COLOR_WHITE);
@@ -36,6 +37,12 @@ int main(int argc, char **argv)
 				}
 				turn++;
 				break;
+		}
+		
+		if(current_line == 34){
+			clear();
+			refresh();
+			current_line = 2;
 		}
 	}
 	endwin();

@@ -17,6 +17,7 @@ int main(int argc, char **argv)
 	int turn = 1;
 	while(1)
 	{
+		attroff(COLOR_PAIR(1));
 		noecho();
 		int action;
 		draw_ui(&player.hp, &enemy.hp, turn);
@@ -51,10 +52,11 @@ void attack(struct Player *attacker, struct Player *defender, int turn)
 void draw_ui(int *player_hp, int *enemy_hp, int turn_number)
 {
 	move(0,1);
-	printw("Your hp: %i", *player_hp)| COLOR_PAIR(1); 
+	printw("Your hp: %i" , *player_hp); 
 	move(0,30);
-	printw("Enemy hp: %i", *enemy_hp)| COLOR_PAIR(1);
+	printw("Enemy hp: %i", *enemy_hp);
 	move(0,60);
-	printw("Turn: %i", turn_number)| COLOR_PAIR(1);
+	printw("Turn: %i", turn_number);
 	refresh();
 }
+

@@ -4,16 +4,13 @@ struct Player { int hp; int max_hp; int damage; int lvl; int exp; int exp_to_lvl
 int current_line;
 int main(int argc, char **argv)
 {	
-	
 	WINDOW *log_win;
 	current_line = 2;
 	system("clear");
 	initscr();
 	int enemy_level = 1;
-	
 	struct Player player = { 100,  100,   10,  1,  0,  100,  "Hero",  100,  100,  1};
 	struct Player enemy  = { 100, 100,    10,  1,  0,  100,  "Ogre",  100,  100,  1};
-	
 	int turn = 1;
 	while(1)
 	{
@@ -55,7 +52,6 @@ int main(int argc, char **argv)
 			break;
 		}
 		enemy_turn(&enemy, &player, turn);
-
 	}
 	endwin();
 	if(player.hp > 0)
@@ -68,7 +64,6 @@ int main(int argc, char **argv)
 	}
 	return 0;
 }
-
 void attack(struct Player *attacker, struct Player *defender, int turn)
 {
 	defender->hp -= attacker->damage;
@@ -77,7 +72,6 @@ void attack(struct Player *attacker, struct Player *defender, int turn)
 	current_line++;
 	printw("%s attacked %s with %i damage", attacker->name, defender->name, attacker->damage);
 }
-
 void heal(struct Player *target, int turn)
 {
 	if(target->mana >= 25)
@@ -89,24 +83,22 @@ void heal(struct Player *target, int turn)
 		printw("%s hp += %i", target->name, 25 * target->magic_power);
 	}
 }
-
 void draw_ui(struct Player *player, struct Player *enemy, int turn_number)
 {
 	move(0,1);
-	printw("HP: %i" , player->hp);
+	printw("HP: %i " , player->hp);
 	move(0,15);
-	printw("Mana: %i", player->mana);
+	printw("Mana: % i", player->mana);
 	move(0,30);
-	printw("LVL: %i", player->lvl); 
+	printw("LVL: % i", player->lvl); 
 	move(0,45);
-	printw("EXP: %i/%i", player->exp, player->exp_to_lvl);
+	printw("EXP: %i / %i ", player->exp, player->exp_to_lvl);
 	move(0,60);
-	printw("Enemy HP: %i", enemy->hp);
+	printw("Enemy HP: %i ", enemy->hp);
 	move(0,100);
-	printw("Turn: %i", turn_number);
+	printw("Turn: %i ", turn_number);
 	refresh();
 }
-
 void lvlup(struct Player *player)
 {
 	player->lvl++;
@@ -132,7 +124,6 @@ void add_exp(struct Player *player, int exp)
 		lvlup(player);
 	}
 }
-
 void enemy_turn(struct Player *enemy, struct Player *player, int turn)
 {
 	if(enemy->hp >= (enemy->hp / 2))
